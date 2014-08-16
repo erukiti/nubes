@@ -8,3 +8,10 @@ command line parser
 
 って事で、標準の flag を使うことにした。
 
+Task interpreter
+----------------
+
+* 何らかのDSLが使えるのが望ましいが、Go標準にはそんな機能は無い
+* cgo/mruby は、build が一手間増える・クロスコンパイルが面倒になる問題はある
+
+ひとまず mruby で様子を見る

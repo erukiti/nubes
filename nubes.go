@@ -16,6 +16,7 @@ func main() {
 	commands := map[string]command{
 		"version": cmdVersion(),
 		"create":  cmdCreate(),
+		"task":    cmdTask(),
 	}
 	flag.Usage = func() {
 		fmt.Fprintln(os.Stderr, "Usage: nubes <subcommand> [options]")
