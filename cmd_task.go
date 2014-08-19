@@ -14,7 +14,7 @@ func cmdTask() command {
 			return fmt.Errorf("Illegal Argument")
 		}
 
-		err := Task(fs.Args()[0], "Nubes.rb")
+		err := Task(fs.Args()[0], ".nubes.rb")
 		return err
 	}}
 }
