@@ -9,23 +9,50 @@ package task
 #include <mruby/error.h>
 #include <mruby/string.h>
 
+void err(mrb_state *mrb, mrbc_context *cxt) {
+  if (!mrb->exc) {
+    return;
+  }
+  mrb_value exc = mrb_obj_value(mrb->exc);
+//  mrb_value backtrace = mrb_get_backtrace(mrb, exc);
+//  puts(mrb_str_to_cstr(mrb, mrb_inspect(mrb, backtrace)));
+
+  mrb_value inspect = mrb_inspect(mrb, exc);
+  puts(mrb_str_to_cstr(mrb, inspect));
+}
+
 static int64_t _mrb_fixnum(mrb_value a) {return mrb_fixnum(a);}
 */
 import "C"
 
 type mruby struct {
 	mrb *C.mrb_state
+	cxt *C.mrbc_context
 }
 
 func NewMRuby() mruby {
 	mruby := mruby{}
 
 	mruby.mrb = C.mrb_open()
+	mruby.cxt = C.mrbc_context_new(mruby.mrb)
+
 	return mruby
 }
 
-func (this *mruby) LoadString(s string) interface{} {
-	return C.mrb_load_string(this.mrb, C.CString(s))
+func (this *mruby) FromFile(fileName string) {
+	file := C.fopen(C.CString(fileName), C.CString("rb"))
+	C.mrb_load_file_cxt(this.mrb, file, this.cxt)
+	// C.err(this.mrb, this.cxt)
+}
+
+func (this *mruby) FromString(script string) {
+	C.mrb_load_string_cxt(this.mrb, C.CString(script), this.cxt)
+	C.err(this.mrb, this.cxt)
+}
+
+func (this *mruby) Close() {
+	C.mrbc_context_free(this.mrb, this.cxt)
+	C.mrb_close(this.mrb)
 }
 
 func mrbToString(mrb *C.mrb_state, Rvalue C.mrb_value) string {

@@ -1,8 +1,9 @@
 package task
 
-func Run(script string, method string) {
+func Run(taskName string, taskFile string) {
 	mruby := NewMRuby()
+	defer mruby.Close()
 	dockerInit(mruby)
-	mruby.LoadString(script)
-	mruby.LoadString(method)
+	mruby.FromFile(taskFile)
+	mruby.FromString(taskName)
 }
