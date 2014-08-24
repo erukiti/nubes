@@ -1,8 +1,6 @@
 package task
 
 /*
-#cgo CFLAGS: -I../mruby/include
-#cgo LDFLAGS: -L../mruby/build/host/lib -lmruby -lm
 
 #include <mruby.h>
 #include <mruby/compile.h>

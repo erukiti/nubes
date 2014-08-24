@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./task"
+	"github.com/erukiti/nubes/task"
 )
 
 func Task(taskName string, taskFile string) error {

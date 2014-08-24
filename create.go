@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./template" // "github.com/erukiti/nubes/template"
+	"github.com/erukiti/nubes/template"
 	// "fmt"
 	"io/ioutil"
 	"os"

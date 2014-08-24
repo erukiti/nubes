@@ -19,8 +19,10 @@ MRuby::Build.new do |conf|
   # conf.gem :github => 'masuidrive/mrbgems-example', :checksum_hash => '76518e8aecd131d047378448ac8055fa29d974a9'
   # conf.gem :git => 'git@github.com:masuidrive/mrbgems-example.git', :branch => 'master', :options => '-v'
 
-  # include the default GEMs
-  conf.gembox 'default'
+  # include the IIJ gembox
+  conf.gembox 'iij'
+
+  conf.gem :git => 'https://github.com/mattn/mruby-updategems.git'
 
   # C compiler settings
   # conf.cc do |cc|
