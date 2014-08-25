@@ -17,6 +17,7 @@ func main() {
 		"version": cmdVersion(),
 		"create":  cmdCreate(),
 		"task":    cmdTask(),
+		"server":  cmdServer(),
 	}
 	flag.Usage = func() {
 		fmt.Fprintln(os.Stderr, "Usage: nubes <subcommand> [options]")
