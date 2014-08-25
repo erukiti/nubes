@@ -11,7 +11,7 @@ func cmdTask() command {
 
 	return command{fs, func(args []string) error {
 		var defaultScript string
-		fs.StringVar(&defaultScript, "script", "nubes/task.rb", "task script")
+		fs.StringVar(&defaultScript, "script", ".nubes/task.rb", "task script")
 		fs.Parse(args)
 		if len(fs.Args()) < 1 {
 			return fmt.Errorf("Illegal Argument")

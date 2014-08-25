@@ -35,3 +35,10 @@ daemon化
 
 serf/consul/docker などは、daemon化は行ってない。
 nubes でも面倒なので daemon 化はしない方向で…
+
+cron
+----
+
+* github.com/gorhill/cronexpr はライセンス的に不採用
+* github.com/robfig/cron は一部を利用する感じで
+
